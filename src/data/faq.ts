@@ -41,7 +41,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'What does it cost?',
     answer:
-      "It's scoped per engagement after the assessment. You see a fixed price before anything is built.",
+      "It's scoped per engagement after the assessment. You see a fixed price before anything is built",
   },
   {
     question: 'Is our client data safe?',
