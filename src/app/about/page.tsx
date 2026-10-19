@@ -14,7 +14,7 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="About"
         title={`About ${site.name}`}
-        intro="A right-sized firm built to take on contract work and finish it cleanly — with one accountable point of contact from award through closeout."
+        intro="A right-sized firm built to take on contract work and finish it cleanly with one accountable point of contact from award through closeout."
       />
 
       <section className="py-20">
@@ -29,7 +29,7 @@ export default function AboutPage() {
                 {site.name} was formed to serve clients who need work done to
                 specification, documented as it happens, and delivered without
                 surprises. We take on scopes we can staff properly and decline
-                the ones we can&apos;t — which is why our performance record
+                the ones we can&apos;t which is why our performance record
                 stands up to review.
               </p>
               <p>

@@ -1,36 +1,22 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Logo from "./Logo";
+import { site } from "@/lib/site";
 
-const UTILITY_LINKS = [
-  { label: "Capability statement", href: "#contact" },
-  { label: "Compliance", href: "#compliance" },
-  { label: "Careers", href: "#careers" },
-  { label: "Contact", href: "#contact" },
-];
-
-const PRIMARY_LINKS = [
-  { label: "Who we are", href: "#who-we-are" },
-  { label: "What we do", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Newsroom", href: "#newsroom" },
-];
-
-const MENU_LINKS = [
-  { label: "Who we are", href: "#who-we-are" },
-  { label: "What we do", href: "#services" },
-  { label: "Working with government", href: "#government" },
-  { label: "Selected projects", href: "#projects" },
-  { label: "Newsroom", href: "#newsroom" },
-  { label: "Careers", href: "#careers" },
-  { label: "Compliance", href: "#compliance" },
-  { label: "Contact", href: "#contact" },
+const LINKS = [
+  { label: "Capabilities", href: "/capabilities" },
+  { label: "About", href: "/about" },
+  { label: "Past Performance", href: "/past-performance" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32);
@@ -49,56 +35,46 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-          scrolled && !open ? "bg-ink" : "bg-transparent"
+        className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
+          scrolled && !open ? "border-rule bg-ink" : "border-transparent bg-transparent"
         }`}
       >
-        <div
-          className={`hidden border-b border-rule transition-opacity duration-300 md:block ${
-            open ? "opacity-0 pointer-events-none" : "opacity-100"
-          }`}
-        >
-          <div className="mx-auto flex max-w-[88rem] justify-end gap-8 px-6 py-2.5 lg:px-12">
-            {UTILITY_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-xs text-mut transition-colors hover:text-fg"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </div>
-
         <div className="mx-auto flex max-w-[88rem] items-center justify-between px-6 py-5 lg:px-12">
-          <a
-            href="#top"
+          <Link
+            href="/"
             onClick={() => setOpen(false)}
             className="flex items-center gap-3 font-head text-lg font-semibold uppercase tracking-[0.14em]"
           >
             <Logo className="h-8 w-8" />
-            Norcrest Group
-          </a>
+            {site.shortName}
+          </Link>
           <div className="flex items-center gap-10">
             <nav
               className={`hidden items-center gap-8 lg:flex ${open ? "pointer-events-none opacity-0" : ""}`}
             >
-              {PRIMARY_LINKS.map((link) => (
-                <a
-                  key={link.label}
+              {LINKS.map((link) => (
+                <Link
+                  key={link.href}
                   href={link.href}
-                  className="text-xs uppercase tracking-[0.12em] text-fg/80 transition-colors hover:text-fg"
+                  className={`text-xs uppercase tracking-[0.12em] transition-colors hover:text-fg ${
+                    pathname === link.href ? "text-fg" : "text-fg/70"
+                  }`}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
+              <Link
+                href="/contact"
+                className="border border-fg/60 px-5 py-2.5 text-xs uppercase tracking-[0.12em] transition-colors hover:bg-fg hover:text-ink"
+              >
+                Request Capabilities
+              </Link>
             </nav>
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
-              className="text-xs uppercase tracking-[0.12em] transition-colors hover:text-mut"
+              className="text-xs uppercase tracking-[0.12em] transition-colors hover:text-mut lg:hidden"
             >
               {open ? "Close" : "Menu"}
             </button>
@@ -107,49 +83,32 @@ export default function Header() {
       </header>
 
       <div
-        className={`fixed inset-0 z-40 bg-ink transition-opacity duration-300 ${
+        className={`fixed inset-0 z-40 bg-ink transition-opacity duration-300 lg:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
-        <div className="mx-auto grid h-full max-w-[88rem] grid-cols-1 px-6 pt-28 pb-12 lg:grid-cols-[2fr_3fr] lg:px-12">
-          <div className="relative hidden border-r border-rule pr-12 lg:block">
-            <div className="img-zoom h-full">
-              {/* eslint-disable-next-line @next/next/no-img-element -- full-bleed art direction */}
-              <img
-                src="/media/office.jpg"
-                alt="Engineer at a dual-monitor workstation in the Houston office"
-                className="photo-treat h-full w-full object-cover"
-              />
-            </div>
-          </div>
-          <nav className="flex flex-col justify-between lg:pl-16">
-            <ul>
-              {MENU_LINKS.map((link) => (
-                <li key={link.label} className="border-b border-rule">
-                  <a
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="block py-5 font-head text-3xl tracking-[-0.02em] transition-colors hover:text-mut lg:text-4xl"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <div className="flex flex-wrap gap-x-8 gap-y-2 pt-10">
-              {UTILITY_LINKS.map((link) => (
-                <a
-                  key={link.label}
+        <nav className="mx-auto flex h-full max-w-[88rem] flex-col px-6 pt-28 pb-12">
+          <ul>
+            {LINKS.map((link) => (
+              <li key={link.href} className="border-b border-rule">
+                <Link
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="text-xs text-mut transition-colors hover:text-fg"
+                  className="block py-5 font-head text-3xl tracking-[-0.02em] transition-colors hover:text-mut"
                 >
                   {link.label}
-                </a>
-              ))}
-            </div>
-          </nav>
-        </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Link
+            href="/contact"
+            onClick={() => setOpen(false)}
+            className="cta-link mt-10 text-sm"
+          >
+            Request Capabilities <span className="arrow">→</span>
+          </Link>
+        </nav>
       </div>
     </>
   );
