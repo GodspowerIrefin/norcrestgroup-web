@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+:root {
+  --base: #0b0d10;
+  --panel: #14171c;
+  --fg: #f2f3f4;
+  --mut: #9aa1a9;
+  --rule: rgba(255, 255, 255, 0.15);
+  --canvas: #0b0d10;
+  --accent: #b0562f;
+}
+
+@theme inline {
+  --color-ink: var(--base);
+  --color-panel: var(--panel);
+  --color-fg: var(--fg);
+  --color-mut: var(--mut);
+  --color-rule: var(--rule);
+  --color-canvas: var(--canvas);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-head: var(--font-inter-tight), var(--font-inter), sans-serif;
+}
+
+/* off-white band: flips the tokens, so components restyle themselves */
+.sec-light {
+  --fg: #101318;
+  --mut: #5a6270;
+  --rule: rgba(16, 19, 24, 0.16);
+  --panel: #e6e3da;
+  --canvas: #f1efe9;
+  background: #f1efe9;
+  color: var(--fg);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--base);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--fg);
+}
+
+/* fade-up on scroll: 600ms ease-out, staggered via --reveal-delay */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+  transition-delay: var(--reveal-delay, 0s);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* text link with animated 1px underline and arrow shift */
+.cta-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5em;
+  position: relative;
+}
+.cta-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform-origin: left;
+  transition: transform 0.4s ease-out;
+}
+.cta-link:hover::after {
+  animation: underline-redraw 0.5s ease-out;
+}
+.cta-link .arrow {
+  transition: transform 0.3s ease-out;
+}
+.cta-link:hover .arrow {
+  transform: translateX(4px);
+}
+@keyframes underline-redraw {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/* photography treatment: slightly desaturated, high contrast */
+.photo-treat {
+  filter: grayscale(0.25) contrast(1.06) brightness(0.92);
+}
+
+/* image hover: scale 1.03 over 700ms, nothing else */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom > * {
+  transition: transform 0.7s ease-out;
+}
+.img-zoom:hover > * {
+  transform: scale(1.03);
+}
+
+/* no JavaScript: show everything rather than leaving reveals hidden */
+@media (scripting: none) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .cta-link:hover::after {
+    animation: none;
+  }
+  .img-zoom:hover > * {
+    transform: none;
+  }
+}
