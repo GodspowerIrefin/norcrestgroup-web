@@ -9,7 +9,6 @@ import { site } from "@/lib/site";
 const LINKS = [
   { label: "Capabilities", href: "/capabilities" },
   { label: "About", href: "/about" },
-  { label: "Past Performance", href: "/past-performance" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -63,12 +62,6 @@ export default function Header() {
                   {link.label}
                 </Link>
               ))}
-              <Link
-                href="/contact"
-                className="border border-fg/60 px-5 py-2.5 text-xs uppercase tracking-[0.12em] transition-colors hover:bg-fg hover:text-ink"
-              >
-                Request Capabilities
-              </Link>
             </nav>
             <button
               type="button"
@@ -101,13 +94,6 @@ export default function Header() {
               </li>
             ))}
           </ul>
-          <Link
-            href="/contact"
-            onClick={() => setOpen(false)}
-            className="cta-link mt-10 text-sm"
-          >
-            Request Capabilities <span className="arrow">→</span>
-          </Link>
         </nav>
       </div>
     </>

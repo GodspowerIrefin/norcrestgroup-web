@@ -5,7 +5,6 @@ import { site } from "@/lib/site";
 const COMPANY_LINKS = [
   { label: "Capabilities", href: "/capabilities" },
   { label: "About", href: "/about" },
-  { label: "Past Performance", href: "/past-performance" },
   { label: "Contact", href: "/contact" },
 ];
 

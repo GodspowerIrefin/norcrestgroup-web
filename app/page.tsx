@@ -9,13 +9,6 @@ import { site } from "@/lib/site";
 const SERVICE_ICONS = ["advisory", "procurement", "civil", "incountry", "tender", "customs"];
 
 export default function Home() {
-  const facts = [
-    { label: "UEI", value: site.registrations.uei },
-    { label: "CAGE Code", value: site.registrations.cage },
-    { label: "SAM.gov", value: site.registrations.samStatus },
-    { label: "Business Type", value: site.registrations.businessType },
-  ].filter((f) => f.value);
-
   return (
     <>
       {/* ========== HERO ========== */}
@@ -55,20 +48,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== REGISTRATION STRIP ========== */}
-      <section className="border-b border-rule">
-        <div className="mx-auto grid max-w-[88rem] gap-8 px-6 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:px-12">
-          {facts.map((f) => (
-            <div key={f.label}>
-              <p className="text-[11px] uppercase tracking-[0.12em] text-mut">
-                {f.label}
-              </p>
-              <p className="mt-3 font-head text-xl tracking-[-0.01em]">{f.value}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ========== SERVICES ========== */}
       <section className="sec-light relative isolate overflow-hidden py-15">
         <BridgeLines className="pointer-events-none absolute right-0 bottom-0 -z-10 w-[72%] max-w-4xl opacity-[0.07]" />
@@ -105,8 +84,8 @@ export default function Home() {
             <div className="border-t border-rule" />
           </div>
 
-          {/* photo strip: mixed aspect ratios, thin vertical rules */}
-          <div className="mt-24 grid md:grid-cols-[4fr_5fr_3fr] md:divide-x md:divide-rule">
+          {/* photo strip: equal columns and ratio, thin vertical rules */}
+          <div className="mt-24 grid md:grid-cols-3 md:divide-x md:divide-rule">
             <Reveal className="md:pr-8">
               <Photo
                 ratio="4/5"
@@ -116,14 +95,14 @@ export default function Home() {
             </Reveal>
             <Reveal delay={0.08} className="max-md:mt-8 md:px-8">
               <Photo
-                ratio="3/2"
+                ratio="4/5"
                 src="/media/warehouse.jpg"
                 caption="Racked distribution warehouse with picking bins"
               />
             </Reveal>
             <Reveal delay={0.16} className="max-md:mt-8 md:pl-8">
               <Photo
-                ratio="1/1"
+                ratio="4/5"
                 src="/media/review.jpg"
                 caption="Documents under review across two workstations"
               />

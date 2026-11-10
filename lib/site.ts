@@ -74,20 +74,4 @@ export const site = {
     "Responsive, right-sized team with no layers of hand-off",
     "Compliance and safety treated as deliverables, not afterthoughts",
   ],
-
-  // TODO: replace with real engagements once you can cite them.
-  pastPerformance: [
-    {
-      client: "TODO — Client or Agency",
-      scope: "TODO — one line on what was delivered",
-      value: "TODO — contract value or period of performance",
-      outcome: "TODO — the measurable result",
-    },
-    {
-      client: "TODO — Client or Agency",
-      scope: "TODO — one line on what was delivered",
-      value: "TODO — contract value or period of performance",
-      outcome: "TODO — the measurable result",
-    },
-  ],
 } as const;
