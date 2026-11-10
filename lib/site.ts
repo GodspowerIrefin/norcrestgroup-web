@@ -14,14 +14,8 @@ export const site = {
     "Norcrest Group LLC delivers professional services to government and commercial clients on schedule, on budget, and to specification.",
 
   contact: {
-    email: "TODO@norcrestgroupllc.com", // TODO: real inbox
-    phone: "TODO (555) 000-0000", // TODO: real number
-    address: {
-      line1: "TODO Street Address",
-      city: "TODO City",
-      state: "TODO",
-      zip: "TODO",
-    },
+    email: "g_irefin@norcrestgroupllc.com",
+    phone: "+1 (617) 380-8491",
   },
 
   // Capability statement identifiers. Leave a value as "" to hide that row.

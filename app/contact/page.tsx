@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  const { email, phone, address } = site.contact;
+  const { email, phone } = site.contact;
 
   return (
     <>
@@ -50,16 +50,6 @@ export default function ContactPage() {
                 >
                   {phone}
                 </a>
-              </li>
-              <li className="border-b border-rule py-6">
-                <span className="block text-[11px] uppercase tracking-[0.12em] text-mut">
-                  Address
-                </span>
-                <span className="mt-3 block leading-relaxed text-fg/80">
-                  {address.line1}
-                  <br />
-                  {address.city}, {address.state} {address.zip}
-                </span>
               </li>
             </ul>
           </Reveal>
