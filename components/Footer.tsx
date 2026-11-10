@@ -5,12 +5,11 @@ import { site } from "@/lib/site";
 const COMPANY_LINKS = [
   { label: "Capabilities", href: "/capabilities" },
   { label: "About", href: "/about" },
-  { label: "Past Performance", href: "/past-performance" },
   { label: "Contact", href: "/contact" },
 ];
 
 export default function Footer() {
-  const { email, phone, address } = site.contact;
+  const { email, phone } = site.contact;
 
   return (
     <footer className="border-t border-rule">
@@ -63,11 +62,6 @@ export default function Footer() {
                   >
                     {phone}
                   </a>
-                </li>
-                <li className="leading-relaxed">
-                  {address.line1}
-                  <br />
-                  {address.city}, {address.state} {address.zip}
                 </li>
               </ul>
             </div>
