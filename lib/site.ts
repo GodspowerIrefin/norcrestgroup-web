@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------------------
 // EDIT THIS FILE to put real Norcrest Group details on the site.
 // Everything marked TODO is placeholder text and should be replaced before
-// you send this link to a prospective client or contracting officer.
+// you send this link to a prospective client or contracting officer
 // ---------------------------------------------------------------------------
 
 export const site = {
