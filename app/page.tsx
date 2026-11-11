@@ -2,6 +2,7 @@ import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import Photo from "@/components/Photo";
 import Icon from "@/components/Icon";
+import NaicsGrid from "@/components/NaicsGrid";
 import { BridgeLines, ContourLines, MarkLines } from "@/components/Backdrop";
 import { site } from "@/lib/site";
 
@@ -84,9 +85,9 @@ export default function Home() {
             <div className="border-t border-rule" />
           </div>
 
-          {/* photo strip: equal columns and ratio, thin vertical rules */}
-          <div className="mt-24 grid md:grid-cols-3 md:divide-x md:divide-rule">
-            <Reveal className="md:pr-8">
+          {/* photo strip: equal px-8 on every column (offset by -mx-8) keeps widths, and so heights, identical */}
+          <div className="mt-24 grid md:-mx-8 md:grid-cols-3 md:divide-x md:divide-rule">
+            <Reveal className="md:px-8">
               <Photo
                 ratio="4/5"
                 src="/media/site-crew.jpg"
@@ -100,11 +101,11 @@ export default function Home() {
                 caption="Racked distribution warehouse with picking bins"
               />
             </Reveal>
-            <Reveal delay={0.16} className="max-md:mt-8 md:pl-8">
+            <Reveal delay={0.16} className="max-md:mt-8 md:px-8">
               <Photo
                 ratio="4/5"
-                src="/media/review.jpg"
-                caption="Documents under review across two workstations"
+                src="/media/port.jpg"
+                caption="Container terminal from above — gantry cranes and stacked cargo"
               />
             </Reveal>
           </div>
@@ -115,32 +116,12 @@ export default function Home() {
       <section className="relative isolate overflow-hidden py-15">
         <ContourLines className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 w-full opacity-[0.07]" />
         <div className="mx-auto max-w-[88rem] px-6 lg:px-12">
-          <div className="grid gap-16 lg:grid-cols-[1fr_2fr]">
-            <div>
-              <Reveal>
-                <h2 className="font-head text-4xl leading-[1.08] tracking-[-0.02em] md:text-5xl">
-                  NAICS codes
-                </h2>
-              </Reveal>
-              <Reveal delay={0.08}>
-                <p className="mt-10 text-base leading-relaxed text-fg/80">
-                  The classifications we register and compete under.
-                </p>
-              </Reveal>
-            </div>
-            <div className="lg:border-l lg:border-rule lg:pl-16">
-              {site.naics.map((n, i) => (
-                <Reveal key={n.code} delay={i * 0.08}>
-                  <div className="flex flex-col gap-2 border-b border-rule py-7 first:border-t sm:flex-row sm:items-baseline sm:gap-10">
-                    <span className="w-24 shrink-0 font-head text-2xl tracking-[-0.01em]">
-                      {n.code}
-                    </span>
-                    <span className="text-sm text-fg/70">{n.label}</span>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
+          <Reveal>
+            <h2 className="font-head text-4xl leading-[1.08] tracking-[-0.02em] md:text-5xl">
+              NAICS codes
+            </h2>
+          </Reveal>
+          <NaicsGrid className="mt-12" />
         </div>
       </section>
 
