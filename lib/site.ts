@@ -32,12 +32,12 @@ export const site = {
 
   // TODO: replace with the NAICS codes you actually bid under.
   naics: [
-    { code: "561210", label: "Facilities Support Services", primary: true },
-    { code: "561720", label: "Janitorial Services", primary: false },
-    { code: "561730", label: "Landscaping Services", primary: false },
-    { code: "561110", label: "Office Administrative Services", primary: false },
-    { code: "561790", label: "Other Services to Buildings and Dwellings", primary: false },
-    { code: "541611", label: "Administrative Management & General Management Consulting Services", primary: false },
+    { code: "561210", label: "Facilities Support Services" },
+    { code: "561720", label: "Janitorial Services" },
+    { code: "561730", label: "Landscaping Services" },
+    { code: "561110", label: "Office Administrative Services" },
+    { code: "561790", label: "Other Services to Buildings and Dwellings" },
+    { code: "541611", label: "Administrative Management & General Management Consulting Services" },
   ],
 
   services: [
@@ -76,8 +76,6 @@ export const site = {
 
   // About page copy, from the company profile document.
   about: {
-    snapshot:
-      "Norcrest Group LLC is a Maryland small business that delivers facilities, janitorial, grounds, and administrative support services to federal, state, and municipal agencies and to commercial prime contractors. We work as a prime or as a subcontractor on larger teams, take on only the scopes we can staff properly, and deliver on schedule, on budget, and to specification.",
     competencies: [
       {
         title: "Facilities Support & Field Services",
@@ -110,15 +108,6 @@ export const site = {
       "Documented processes and fixed-cadence reporting from day one",
       "Right-sized team with no layers of hand-off",
       "Compliance and safety treated as deliverables, not afterthoughts",
-    ],
-    companyData: [
-      { label: "Legal Name", value: "Norcrest Group LLC" },
-      { label: "UEI", value: "MSF2CT9RGN77" },
-      { label: "CAGE Code", value: "25AR3" },
-      { label: "Business Size", value: "Small Business" },
-      { label: "Registrations", value: "SAM.gov; Maryland eMMA" },
-      { label: "Certifications", value: "Maryland CSB" },
-      { label: "Location", value: "Maryland" },
     ],
   },
 } as const;

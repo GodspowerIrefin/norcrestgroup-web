@@ -23,14 +23,7 @@ export default function NaicsGrid({ className = "" }: { className?: string }) {
             <span className="w-24 shrink-0 font-head text-2xl tracking-[-0.01em]">
               {n.code}
             </span>
-            <span className="text-sm text-fg/70">
-              {n.label}
-              {n.primary && (
-                <span className="ml-3 text-[11px] uppercase tracking-[0.12em] text-accent">
-                  Primary
-                </span>
-              )}
-            </span>
+            <span className="text-sm text-fg/70">{n.label}</span>
           </div>
         </Reveal>
       ))}
