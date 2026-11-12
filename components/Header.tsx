@@ -41,7 +41,14 @@ export default function Header() {
         <div className="mx-auto flex max-w-[88rem] items-center justify-between px-6 py-5 lg:px-12">
           <Link
             href="/"
-            onClick={() => setOpen(false)}
+            onClick={(e) => {
+              setOpen(false);
+              // already home: Link won't navigate, so scroll up instead
+              if (pathname === "/") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
             className="flex items-center gap-3 font-head text-lg font-semibold uppercase tracking-[0.14em]"
           >
             <Logo className="h-8 w-8" />

@@ -10,25 +10,23 @@ export const metadata: Metadata = {
   description: `About ${site.name} — how we work and what we hold ourselves to.`,
 };
 
+const h2 = "font-head text-4xl leading-[1.08] tracking-[-0.02em] md:text-5xl";
+
 export default function AboutPage() {
+  const { about } = site;
+
   return (
     <>
-      <PageHeader
-        eyebrow="About"
-        title={`About ${site.name}`}
-        intro="A right-sized firm built to take on contract work and finish it cleanly with one accountable point of contact from award through closeout."
-      />
+      <PageHeader eyebrow="About" title={site.name} intro={site.tagline} />
 
+      {/* ========== OUR APPROACH ========== */}
       <section className="sec-light py-15">
         <div className="mx-auto max-w-[88rem] px-6 lg:px-12">
           <div className="grid gap-16 lg:grid-cols-[2fr_1fr]">
             <div>
               <Reveal>
-                <h2 className="font-head text-4xl leading-[1.08] tracking-[-0.02em] md:text-5xl">
-                  Our approach
-                </h2>
+                <h2 className={h2}>Our approach</h2>
               </Reveal>
-              {/* TODO: replace the three paragraphs below with the real company story. */}
               <Reveal delay={0.08}>
                 <div className="mt-12 max-w-2xl space-y-6 text-base leading-relaxed text-fg/80">
                   <p>
@@ -64,18 +62,44 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ========== CORE COMPETENCIES ========== */}
       <section className="py-15">
+        <div className="mx-auto max-w-[88rem] px-6 lg:px-12">
+          <Reveal>
+            <h2 className={h2}>Core Competencies</h2>
+          </Reveal>
+          <div className="mt-16">
+            {about.competencies.map((c, i) => (
+              <Reveal key={c.title} delay={(i % 3) * 0.08}>
+                <div className="grid gap-4 border-t border-rule py-10 md:grid-cols-12 md:gap-8">
+                  <p className="text-sm text-mut md:col-span-1">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="font-head text-2xl tracking-[-0.02em] md:col-span-5 lg:text-3xl">
+                    {c.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-fg/70 md:col-span-5 md:col-start-8">
+                    {c.body}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+            <div className="border-t border-rule" />
+          </div>
+        </div>
+      </section>
+
+      {/* ========== DIFFERENTIATORS ========== */}
+      <section className="sec-light py-15">
         <div className="mx-auto max-w-[88rem] px-6 lg:px-12">
           <div className="grid gap-16 lg:grid-cols-[1fr_2fr]">
             <Reveal>
-              <h2 className="font-head text-4xl leading-[1.08] tracking-[-0.02em] md:text-5xl">
-                Commitments on every contract
-              </h2>
+              <h2 className={h2}>Differentiators</h2>
             </Reveal>
             <ul className="lg:border-l lg:border-rule lg:pl-16">
-              {site.differentiators.map((d, i) => (
+              {about.differentiators.map((d, i) => (
                 <Reveal key={d} as="li" delay={i * 0.08}>
-                  <div className="flex items-start gap-4 border-b border-rule py-6 first:pt-0">
+                  <div className="flex items-start gap-4 border-b border-rule py-6">
                     <Icon name="check" className="mt-1 h-5 w-5 shrink-0 text-accent" />
                     <span className="text-lg leading-relaxed">{d}</span>
                   </div>
